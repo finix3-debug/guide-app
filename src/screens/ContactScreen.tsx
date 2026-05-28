@@ -5,7 +5,7 @@ import { Flipbook } from "../components/Flipbook";
 
 const GUIDE_PDF_URL = "https://storage.googleapis.com/dala-prod-public-storage/attachments/d72d17ec-a3be-4e7e-bcca-533f54043adf/1779960426717_guide_pratique.pdf";
 
-const GUIDE_PAGES = [
+const CONTACT_PAGES = [
   { name: "page_01_intro.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-a-intro-eb36b9c5-1779956718090.webp" },
   { name: "page_02_prep.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-b-prep-a3ef3fec-1779956717944.webp" },
   { name: "page_03_contrast.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-c-contrast-073838c1-1779956718206.webp" },
@@ -53,7 +53,7 @@ const ContactScreen = () => {
       {/* BookFlip Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-6 relative z-10 bg-gradient-to-b from-black via-zinc-950 to-black">
         <div className="w-full max-w-lg mb-10">
-          <Flipbook images={GUIDE_PAGES} />
+          <Flipbook images={CONTACT_PAGES} />
         </div>
 
         {/* PDF Link Access */}
