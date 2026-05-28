@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, BookOpen, Loader2, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
+import { ChevronLeft, Syringe, Loader2, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
 // @ts-ignore - Missing type declarations for react-pageflip
 import HTMLFlipBook from 'react-pageflip';
 
