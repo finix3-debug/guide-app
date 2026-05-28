@@ -5,6 +5,7 @@ import MainScreen from "./screens/MainScreen";
 import GuideScreen from "./screens/GuideScreen";
 import ProtocolsScreen from "./screens/ProtocolsScreen";
 import ContactScreen from "./screens/ContactScreen";
+import RoleScreen from "./screens/RoleScreen";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const AnimatedRoutes = () => {
         <Route path="/guide" element={<GuideScreen />} />
         <Route path="/protocoles" element={<ProtocolsScreen />} />
         <Route path="/contact" element={<ContactScreen />} />
+        <Route path="/Role" element={<RoleScreen />} />
       </Routes>
     </AnimatePresence>
   );
