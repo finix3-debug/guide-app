@@ -38,12 +38,12 @@ const MainScreen = () => {
 
             <GlassButton onClick={() => navigate("/protocoles")}>
               <Heart size={41} className="text-cyan-300" />
-              <span>Anatomie Cardio Vasculaire & L'Angioscanner thoracique</span>
+              <span>Anatomie Cardio Vasculaire <br /> & L'Angioscanner thoracique</span>
             </GlassButton>
 
             <GlassButton onClick={() => navigate("/contact")}>
               <Syringe size={41} className="text-cyan-300" />
-              <span>L’injecteur automatique           & Produit de contraste</span>
+              <span>L’injecteur automatique <br /> & Produit de contraste</span>
             </GlassButton>
           </motion.div>
         </div>
