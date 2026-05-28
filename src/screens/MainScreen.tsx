@@ -42,7 +42,7 @@ const MainScreen = () => {
             </GlassButton>
 
             <GlassButton onClick={() => navigate("/contact")}>
-              <Syringe size={41} className="text-cyan-300" />
+              <Syringe size={35} className="text-cyan-300" />
               <span>L’injecteur automatique <br />     & Produit de contraste</span>
             </GlassButton>
           </motion.div>
