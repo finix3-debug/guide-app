@@ -6,7 +6,7 @@ import { ChevronLeft, BookOpen, Loader2, ChevronRight, Maximize2, Minimize2 } fr
 import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
-const contactPages = [
+const guidePages = [
   { name: 'Page 1', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0001-62c1e181-1779954437483.webp' },
   { name: 'Page 2', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0002-1ca4f8f5-1779954438334.webp' },
   { name: 'Page 3', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0003-005e5c61-1779954437163.webp' },
@@ -19,7 +19,7 @@ const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height
     <div className="bg-white shadow-2xl relative overflow-hidden" ref={ref}>
       <img 
         src={props.url} 
-        alt="contact Page"
+        alt="Guide Page"
         className="w-full h-full object-contain"
         loading="lazy"
       />
@@ -27,7 +27,7 @@ const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height
   );
 });
 
-const contactScreen = () => {
+const GuideScreen = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
