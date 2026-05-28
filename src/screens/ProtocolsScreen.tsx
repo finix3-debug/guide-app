@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, BookOpen, Loader2, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
+import { ChevronLeft, Heart, Loader2, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
 // @ts-ignore - Missing type declarations for react-pageflip
 import HTMLFlipBook from 'react-pageflip';
 
@@ -88,7 +88,7 @@ const GuideScreen = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <BookOpen className="w-8 h-8 text-cyan-500 opacity-80" />
+                <Heart className="w-8 h-8 text-cyan-500 opacity-80" />
                 <h2 className="text-3xl font-serif font-bold text-white tracking-wider">
                   Anatomie Cardio Vasculaire & L'Angioscanner thoracique  
                 </h2>
