@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BookOpen, ClipboardList, Phone } from "lucide-react";
+import { BookOpen, Heart, Syringe } from "lucide-react";
 import { GlassButton } from "../components/GlassButton";
 import { MedicalHeader } from "../components/MedicalHeader";
 
@@ -37,12 +37,12 @@ const MainScreen = () => {
             </GlassButton>
 
             <GlassButton onClick={() => navigate("/protocoles")}>
-              <ClipboardList size={20} className="text-cyan-300" />
+              <Heart size={20} className="text-cyan-300" />
               <span>Protocoles d'Examen</span>
             </GlassButton>
 
             <GlassButton onClick={() => navigate("/contact")}>
-              <Phone size={20} className="text-cyan-300" />
+              <Syringe size={20} className="text-cyan-300" />
               <span>Infos & Contact</span>
             </GlassButton>
           </motion.div>
