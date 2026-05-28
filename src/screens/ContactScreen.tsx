@@ -186,7 +186,7 @@ const GuideScreen = () => {
       {!isFullscreen && (
         <div className="bg-black py-6 px-8 text-center border-t border-white/5 mt-auto">
           <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
-            Expérience Interactive Haute Fidélité • Angioscanner
+            Z.Rania MIMSP-Saida / 2026 
           </p>
         </div>
       )}
