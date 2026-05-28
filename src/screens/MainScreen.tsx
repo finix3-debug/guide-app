@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BookOpen, Heart, Syringe, userRoundCog } from "lucide-react";
+import { BookOpen, Heart, Syringe, UserRoundCog } from "lucide-react";
 import { GlassButton } from "../components/GlassButton";
 import { MedicalHeader } from "../components/MedicalHeader";
 
@@ -47,7 +47,7 @@ const MainScreen = () => {
             </GlassButton>
             
             <GlassButton onClick={() => navigate("/Role")}>
-              <userRoundCog size={30} className="text-cyan-300" />
+              <UserRoundCog size={30} className="text-cyan-300" />
               <span>Le Role de Manip</span>
             </GlassButton>
           </motion.div>
