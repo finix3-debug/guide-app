@@ -7,11 +7,17 @@ import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
 const guidePages = [
-  { name: 'Page 1', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0001-62c1e181-1779954437483.webp' },
-  { name: 'Page 2', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0002-1ca4f8f5-1779954438334.webp' },
-  { name: 'Page 3', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0003-005e5c61-1779954437163.webp' },
-  { name: 'Page 4', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0004-0976753f-1779954437044.webp' },
-  { name: 'Page 11', url: 'https://storage.googleapis.com/dala-prod-public-storage/attachments/1581431d-a8bd-44bd-bafb-1d2b6cda5b0f/1779954384181_guide_pratique_page-0011.jpg' }
+  { name: 'Page 1', url: 'https://i.ibb.co/JwRzjyJr/img-1.png' },
+  { name: 'Page 2', url: 'https://i.ibb.co/8L51kZkm/img-2.png' },
+  { name: 'Page 3', url: 'https://i.ibb.co/39XYbhgX/img-3.png' },
+  { name: 'Page 4', url: 'https://i.ibb.co/G311QNrX/img-4.png' },
+  { name: 'Page 5', url: 'https://i.ibb.co/Hf1bjS4G/img-5.png' },
+  { name: 'Page 6', url: 'https://i.ibb.co/n87GnK7v/img-6.png' },
+  { name: 'Page 7', url: 'https://i.ibb.co/wrNStmGK/img-7.png' },
+  { name: 'Page 8', url: 'https://i.ibb.co/XZrysPBc/img-8.png' },
+  { name: 'Page 9', url: 'https://i.ibb.co/cVzJn0g/img-9.png' },
+  { name: 'Page 10', url: 'https://i.ibb.co/KjDj9xJ4/img-10.png' },
+  { name: 'Page 11', url: 'https://i.ibb.co/pBGTsFyC/img-11.png' }
 ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
