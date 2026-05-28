@@ -1,27 +1,61 @@
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ChevronLeft, Book, FileText, Download } from "lucide-react";
-import { Flipbook } from "../components/Flipbook";
+import React, { useState, forwardRef, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, BookOpen, Loader2, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
+// @ts-ignore - Missing type declarations for react-pageflip
+import HTMLFlipBook from 'react-pageflip';
 
-const GUIDE_PDF_URL = "https://storage.googleapis.com/dala-prod-public-storage/attachments/d72d17ec-a3be-4e7e-bcca-533f54043adf/1779960426717_guide_pratique.pdf";
-
-// Clinical guide images representing the 11 pages of the PDF, sorted alphabetically
-const GUIDE_PAGES = [
-  { name: "page_01_intro.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-a-intro-eb36b9c5-1779956718090.webp" },
-  { name: "page_02_prep.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-b-prep-a3ef3fec-1779956717944.webp" },
-  { name: "page_03_contrast.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-c-contrast-073838c1-1779956718206.webp" },
-  { name: "page_04_acquisition.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-d-acquisition-562728da-1779956718608.webp" },
-  { name: "page_05_reconstruct.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-e-reconstruction-13149a2e-1779956718818.webp" },
-  { name: "page_06_anatomy.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-f-anatomy-851d28f7-1779956719230.webp" },
-  { name: "page_07_pathology.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-g-pathology-5b79830f-1779956717957.webp" },
-  { name: "page_08_postprocessing.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-h-postprocessing-b2e45707-1779956718075.webp" },
-  { name: "page_09_reporting.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-i-reporting-735fa77b-1779956720951.webp" },
-  { name: "page_10_radiation.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-j-radiation-5f566d31-1779956720806.webp" },
-  { name: "page_11_emergency.webp", url: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/4998d01f-62b9-49ee-a51e-5bdd22d50976/guide-k-emergency-294cce36-1779956721140.webp" },
+// Image sources organized by "page name"
+const guidePages = [
+  { name: 'Page 1', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0001-62c1e181-1779954437483.webp' },
+  { name: 'Page 2', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0002-1ca4f8f5-1779954438334.webp' },
+  { name: 'Page 3', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0003-005e5c61-1779954437163.webp' },
+  { name: 'Page 4', url: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/da9f9234-66c3-48e5-8ed6-5f7d9e03437a/guide-page-0004-0976753f-1779954437044.webp' },
+  { name: 'Page 11', url: 'https://storage.googleapis.com/dala-prod-public-storage/attachments/1581431d-a8bd-44bd-bafb-1d2b6cda5b0f/1779954384181_guide_pratique_page-0011.jpg' }
 ];
+
+const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
+  return (
+    <div className="bg-white shadow-2xl relative overflow-hidden" ref={ref}>
+      <img 
+        src={props.url} 
+        alt="Guide Page"
+        className="w-full h-full object-contain"
+        loading="lazy"
+      />
+    </div>
+  );
+});
 
 const GuideScreen = () => {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(400);
+  const flipbookRef = useRef<any>(null);
+
+  // Responsive width calculation
+  useEffect(() => {
+    const updateWidth = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      if (isFullscreen) {
+        const targetWidth = Math.min(width - 40, (height - 100) / 1.41);
+        setContainerWidth(Math.floor(targetWidth));
+      } else {
+        if (width < 640) {
+          setContainerWidth(width - 60);
+        } else {
+          setContainerWidth(450);
+        }
+      }
+    };
+    
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, [isFullscreen]);
 
   return (
     <motion.div
@@ -29,59 +63,129 @@ const GuideScreen = () => {
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
       transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-      className="relative w-full min-h-screen bg-black flex flex-col overflow-hidden"
+      className={`relative w-full h-full bg-black flex flex-col ${isFullscreen ? 'p-0' : 'pt-16'}`}
     >
-      {/* Dynamic Header */}
-      <div className="pt-16 px-8 pb-8 flex items-center justify-between z-20 border-b border-white/5 bg-black/50 backdrop-blur-xl shadow-2xl">
-        <button 
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group"
-        >
-          <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-xl font-serif font-medium uppercase tracking-tighter">Main</span>
-        </button>
+      <AnimatePresence>
+        {!isFullscreen && (
+          <motion.div 
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="px-8 flex flex-col gap-6"
+          >
+            <button 
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors w-fit group"
+            >
+              <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
+              <span className="text-xl font-serif font-medium">Back</span>
+            </button>
 
-        <div className="flex flex-col items-end">
-          <div className="flex items-center gap-3">
-            <Book className="text-cyan-500 w-6 h-6" />
-            <h2 className="text-2xl font-serif font-bold text-white tracking-widest uppercase">
-              Guide Pratique
-            </h2>
-          </div>
-          <span className="text-[10px] text-zinc-500 tracking-[0.3em] mt-1 font-serif uppercase">Clinical Protocols</span>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <BookOpen className="w-8 h-8 text-cyan-500 opacity-80" />
+                <h2 className="text-3xl font-serif font-bold text-white tracking-wider">
+                  Guide Pratique
+                </h2>
+              </div>
+              <button 
+                onClick={() => setIsFullscreen(true)}
+                className="p-2 bg-zinc-800 rounded-full text-cyan-400 hover:bg-zinc-700 transition-all shadow-lg border border-cyan-500/20"
+              >
+                <Maximize2 className="w-5 h-5" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {isFullscreen && (
+        <button 
+          onClick={() => setIsFullscreen(false)}
+          className="absolute top-6 right-6 z-50 p-3 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all border border-white/10 shadow-2xl"
+        >
+          <Minimize2 className="w-6 h-6" />
+        </button>
+      )}
+
+      {/* Flipbook Container */}
+      <div className="flex-1 flex flex-col items-center justify-center p-4 min-h-0">
+        <div className="relative w-full flex flex-col items-center justify-center">
+          <HTMLFlipBook
+            width={containerWidth}
+            height={Math.round(containerWidth * 1.41)}
+            size="stretch"
+            minWidth={300}
+            maxWidth={isFullscreen ? 800 : 500}
+            minHeight={420}
+            maxHeight={isFullscreen ? 1100 : 700}
+            maxShadowOpacity={0.5}
+            showCover={true}
+            mobileScrollSupport={true}
+            onFlip={(e: any) => setCurrentPage(e.data)}
+            className="shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
+            ref={flipbookRef}
+            startPage={0}
+            drawShadow={true}
+            flippingTime={1000}
+            usePortrait={true}
+            autoSize={true}
+            clickEventForward={true}
+            useMouseEvents={true}
+            swipeDistance={30}
+            showPageCorners={true}
+            disableFlipByClick={false}
+            style={{}}
+            startZIndex={0}
+          >
+            {guidePages.map((page, index) => (
+              <FlipPage 
+                key={`page_${index + 1}`} 
+                url={page.url}
+                width={containerWidth}
+                height={Math.round(containerWidth * 1.41)}
+              />
+            ))}
+          </HTMLFlipBook>
+
+          {/* Flipbook Controls */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="mt-10 flex items-center gap-8 bg-zinc-900/90 backdrop-blur-xl px-8 py-4 rounded-full border border-white/10 shadow-2xl"
+          >
+            <button 
+              onClick={() => flipbookRef.current?.pageFlip()?.flipPrev()}
+              disabled={currentPage === 0}
+              className={`p-2 transition-all ${currentPage === 0 ? 'text-zinc-600' : 'text-cyan-400 hover:text-white hover:scale-110'}`}
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            
+            <div className="flex flex-col items-center min-w-[80px]">
+              <span className="text-white/40 font-serif text-[10px] tracking-[0.3em] uppercase mb-1">Page</span>
+              <span className="text-cyan-400 font-serif font-bold text-xl tabular-nums">
+                {currentPage + 1} <span className="text-white/20 mx-1">/</span> {guidePages.length}
+              </span>
+            </div>
+
+            <button 
+              onClick={() => flipbookRef.current?.pageFlip()?.flipNext()}
+              disabled={currentPage >= guidePages.length - 1}
+              className={`p-2 transition-all ${currentPage >= guidePages.length - 1 ? 'text-zinc-600' : 'text-cyan-400 hover:text-white hover:scale-110'}`}
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          </motion.div>
         </div>
       </div>
 
-      {/* BookFlip Content */}
-      <div className="flex-1 flex flex-col items-center justify-center p-6 relative z-10 bg-gradient-to-b from-black via-zinc-950 to-black">
-        <div className="w-full max-w-lg mb-10">
-          <Flipbook images={GUIDE_PAGES} />
-        </div>
-
-        {/* PDF Link Access */}
-        <div className="flex flex-col items-center gap-4">
-          <motion.a
-            href={GUIDE_PDF_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(6, 182, 212, 0.2)" }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 transition-all shadow-[0_0_30px_rgba(6,182,212,0.15)]"
-          >
-            <FileText size={20} />
-            <span className="font-serif font-medium text-lg">Download Protocol PDF</span>
-            <Download size={16} className="opacity-60 ml-2" />
-          </motion.a>
-          <p className="text-[10px] text-zinc-600 font-serif uppercase tracking-[0.2em]">
-            Official Medical Documentation • Rev 2026.05
+      {!isFullscreen && (
+        <div className="bg-black py-6 px-8 text-center border-t border-white/5 mt-auto">
+          <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
+            Expérience Interactive Haute Fidélité • Angioscanner
           </p>
         </div>
-      </div>
-
-      {/* Background Decorative Accents */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-cyan-500/5 blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
-      <div className="absolute top-1/4 -left-12 w-64 h-64 bg-cyan-500/5 rounded-full blur-[100px]" />
+      )}
     </motion.div>
   );
 };
