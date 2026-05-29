@@ -7,10 +7,10 @@ import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
 const guidePages = [
-  { name: 'Page 1', url: '/images/Role/img-1.png' },
-  { name: 'Page 2', url: '/images/Role/img-2.png' },
-  { name: 'Page 3', url: '/images/Role/img-3.png' },
-  { name: 'Page 4', url: '/images/Role/img-4.png' },
+  { name: 'Page 1', url: '/images/Role/img-1.jpg' },
+  { name: 'Page 2', url: '/images/Role/img-2.jpg' },
+  { name: 'Page 3', url: '/images/Role/img-3.jpg' },
+  { name: 'Page 4', url: '/images/Role/img-4.jpg' },
   ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
