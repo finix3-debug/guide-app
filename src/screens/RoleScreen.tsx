@@ -105,7 +105,7 @@ const GuideScreen = () => {
               <div className="flex items-center gap-4">
                 <UserRoundCog className="w-10 h-10 text-cyan-500 opacity-80" />
                 <h2 className="text-3xl font-serif font-bold text-white tracking-wider">
-                  Le Rôle du Manipulateur   
+                  Le rôle du manipulateur dans la prise en charge des patients au cours de l’angioscanner thoracique   
                 </h2>
               </div>
               <button 
