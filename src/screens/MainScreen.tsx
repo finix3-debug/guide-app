@@ -55,15 +55,12 @@ const MainScreen = () => {
 
         {/* Subtle Bottom Glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-32 bg-cyan-500/10 blur-[100px] pointer-events-none" />
+        <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
+            Z.Rania MIMSP-Saida / 2026 
+          </p>
       </div>
     </div>
   );
 };
-{!isFullscreen && (
-        <div className="bg-black py-6 px-8 text-center border-t border-white/5 mt-auto">
-          <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
-            Z.Rania MIMSP-Saida / 2026 
-          </p>
-        </div>
-      )}
+
 export default MainScreen;
