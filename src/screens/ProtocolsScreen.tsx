@@ -83,7 +83,7 @@ const GuideScreen = () => {
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors w-fit group"
             >
               <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-xl font-serif font-medium">Back</span>
+              <span className="text-xl font-serif font-medium">retour</span>
             </button>
 
             <div className="flex items-center justify-between">
@@ -187,7 +187,7 @@ const GuideScreen = () => {
 
       {!isFullscreen && (
         <div className="bg-black py-6 px-8 text-center border-t border-white/5 mt-auto">
-          <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
+          <p className="text-white/90 text-[9px] font-serif uppercase tracking-[0.6em]">
             Z.Rania MIMSP-Saida / 2026 
           </p>
         </div>
