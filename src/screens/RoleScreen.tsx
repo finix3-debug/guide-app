@@ -17,7 +17,8 @@ const guidePages = [
   { name: 'Page 8', url: 'https://i.ibb.co/twkWSyqz/img-8.png' },
   { name: 'Page 9', url: 'https://i.ibb.co/tMqtg4p0/img-09.png' },
   { name: 'Page 10', url: 'https://i.ibb.co/nNW98JNx/img-10.png' },
-  { name: 'Page 11', url: 'https://i.ibb.co/3yHrgW07/img-11.png' }
+  { name: 'Page 11', url: 'https://i.ibb.co/nNW98JNx/img-11.png' },
+  { name: 'Page 12', url: 'https://i.ibb.co/3yHrgW07/img-12.png' }
   ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
