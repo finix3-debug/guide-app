@@ -7,7 +7,7 @@ import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
 const guidePages = [
-  { name: 'Page 1', url: 'https://i.ibb.co/Wp4TCy6Y/img-1.png' },
+  { name: 'Page 1', url: 'https://i.ibb.co/cc4hMYWp/img-1.jpg' },
   { name: 'Page 2', url: 'https://i.ibb.co/35FrFsNP/img-2.png' },
   { name: 'Page 3', url: 'https://i.ibb.co/htrjgcQ/img-3.png' },
   { name: 'Page 4', url: 'https://i.ibb.co/7tYgxKJr/img-4.png' },
