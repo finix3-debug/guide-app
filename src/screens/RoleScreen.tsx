@@ -10,6 +10,14 @@ import img1 from '../assets/role_1.jpg';
 import img2 from '../assets/role_2.jpg';
 import img3 from '../assets/role_3.jpg';
 import img4 from '../assets/role_4.jpg';
+import img5 from '../assets/role_5.jpg';
+import img6 from '../assets/role_6.jpg';
+import img7 from '../assets/role_7.jpg';
+import img8 from '../assets/role_8.jpg';
+import img9 from '../assets/role_9.jpg';
+import img10 from '../assets/role_10.jpg';
+import img11 from '../assets/role_11.jpg';
+import img12 from '../assets/role_12.jpg';
 // ... استيراد باقي الصور
 
 const guidePages = [
@@ -17,6 +25,14 @@ const guidePages = [
   { name: 'Page 2', url: img2 },
   { name: 'Page 3', url: img3 },
   { name: 'Page 4', url: img4 },
+  { name: 'Page 5', url: img5 },
+  { name: 'Page 6', url: img6 },
+  { name: 'Page 7', url: img7 },
+  { name: 'Page 8', url: img8 },
+  { name: 'Page 9', url: img9 },
+  { name: 'Page 10', url: img10 },
+  { name: 'Page 11', url: img11 },
+  { name: 'Page 12', url: img12 },
   ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
