@@ -17,7 +17,7 @@ const guidePages = [
   { name: 'Page 8', url: 'https://i.postimg.cc/d0z5FZKG/img-8.png' },
   { name: 'Page 9', url: 'https://i.postimg.cc/s2tTzGR9/img-9.png' },
   { name: 'Page 10', url: 'https://i.postimg.cc/YSJd7LwN/img-10.png' },
-  { name: 'Page 11', url: 'https://i.postimg.cc/GpZXRT1F/img-11.png' };
+  { name: 'Page 11', url: 'https://i.postimg.cc/GpZXRT1F/img-11.png' },
   { name: 'Page 12', url: 'https://i.postimg.cc/mr0m41Gj/img-12.png' }
   ];
 
