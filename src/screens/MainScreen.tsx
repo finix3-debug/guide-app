@@ -48,7 +48,7 @@ const MainScreen = () => {
             
             <GlassButton onClick={() => navigate("/Role")}>
               <UserRoundCog size={40} className="text-cyan-300" />
-              <span>Rôle du Manipulateur Dans la Prise en Charge des Patients</span>
+              <span>Le Rôle du Manipulateur Dans la Prise en Charge des Patients</span>
             </GlassButton>
           </motion.div>
         </div>
