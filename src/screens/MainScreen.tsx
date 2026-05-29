@@ -47,7 +47,7 @@ const MainScreen = () => {
             </GlassButton>
             
             <GlassButton onClick={() => navigate("/Role")}>
-              <UserRoundCog size={30} className="text-cyan-300" />
+              <UserRoundCog size={25} className="text-cyan-300" />
               <span>Le Rôle du Manipulateur Dans la Prise en Charge des Patients</span>
             </GlassButton>
           </motion.div>
@@ -55,7 +55,7 @@ const MainScreen = () => {
 
         {/* Subtle Bottom Glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-32 bg-cyan-500/10 blur-[100px] pointer-events-none" />
-        <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
+        <p className="text-white/90 text-[9px] font-serif uppercase tracking-[0.6em]">
             Z.Rania MIMSP-Saida / 2026 
           </p>
       </div>
