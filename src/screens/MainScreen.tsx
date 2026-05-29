@@ -48,7 +48,7 @@ const MainScreen = () => {
             
             <GlassButton onClick={() => navigate("/Role")}>
               <UserRoundCog size={30} className="text-cyan-300" />
-              <span>Le Role de Manip</span>
+              <span>Le Rôle du Manipulateur Dans la Prise en Charge des Patients</span>
             </GlassButton>
           </motion.div>
         </div>
@@ -59,5 +59,11 @@ const MainScreen = () => {
     </div>
   );
 };
-
+{!isFullscreen && (
+        <div className="bg-black py-6 px-8 text-center border-t border-white/5 mt-auto">
+          <p className="text-white/20 text-[9px] font-serif uppercase tracking-[0.6em]">
+            Z.Rania MIMSP-Saida / 2026 
+          </p>
+        </div>
+      )}
 export default MainScreen;
