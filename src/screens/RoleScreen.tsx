@@ -7,18 +7,18 @@ import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
 const guidePages = [
-  { name: 'Page 1', url: 'https://i.ibb.co/HDn57L25/img-1.png' },
-  { name: 'Page 2', url: 'https://i.ibb.co/N28R0V8f/img-2.png' },
-  { name: 'Page 3', url: 'https://i.ibb.co/nsx5J2kQ/img-3.png' },
-  { name: 'Page 4', url: 'https://i.ibb.co/nNqtXKnS/img-4.png' },
-  { name: 'Page 5', url: 'https://i.ibb.co/tMNHxCmm/img-5.png' },
-  { name: 'Page 6', url: 'https://i.ibb.co/x85VJFPb/img-6.png' },
-  { name: 'Page 7', url: 'https://i.ibb.co/MxHJLxj6/img-7.png' },
-  { name: 'Page 8', url: 'https://i.ibb.co/spM6R7h9/img-8.png' },
-  { name: 'Page 9', url: 'https://i.ibb.co/qLJBZS0B/img-09.png' },
-  { name: 'Page 10', url: 'https://i.ibb.co/5gpXsmvH/img-10.png' },
-  { name: 'Page 10', url: 'https://i.ibb.co/h1c6TJtp/img-11.png' },
-  { name: 'Page 11', url: 'https://i.ibb.co/GZBGfBt/img-12.png' }
+  { name: 'Page 1', url: 'https://i.ibb.co/tT6Kz3DL/img-1.png' },
+  { name: 'Page 2', url: 'https://i.ibb.co/whG6cgsk/img-2.png' },
+  { name: 'Page 3', url: 'https://i.ibb.co/0ySC8DNr/img-3.png' },
+  { name: 'Page 4', url: 'https://i.ibb.co/QvHrK7cj/img-4.png' },
+  { name: 'Page 5', url: 'https://i.ibb.co/fYxJTT4T/img-5.png' },
+  { name: 'Page 6', url: 'https://i.ibb.co/q3h8Gb7X/img-6.png' },
+  { name: 'Page 7', url: 'https://i.ibb.co/jk1PwyHt/img-7.png' },
+  { name: 'Page 8', url: 'https://i.ibb.co/3m6JXsRr/img-8.png' },
+  { name: 'Page 9', url: 'https://i.ibb.co/TBDZtFt1/img-09.png' },
+  { name: 'Page 10', url: 'https://i.ibb.co/QFhzJW0Z/img-10.png' },
+  { name: 'Page 10', url: 'https://i.ibb.co/8nLSGz4H/img-11.png' },
+  { name: 'Page 11', url: 'https://i.ibb.co/nNYn2SJL/img-12.png' }
 ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
@@ -89,7 +89,7 @@ const GuideScreen = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <UserRoundCog className="w-8 h-8 text-cyan-500 opacity-80" />
+                <UserRoundCog className="w-9 h-9 text-cyan-500 opacity-80" />
                 <h2 className="text-3xl font-serif font-bold text-white tracking-wider">
                   Le Rôle du Manipulateur Dans la Prise en Charge Des Patients Au Cours de L’Angioscanner Thoracique  
                 </h2>
