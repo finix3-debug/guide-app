@@ -7,18 +7,18 @@ import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
 const guidePages = [
-  { name: 'Page 1', url: 'https://i.ibb.co/cc4hMYWp/img-1.jpg' },
-  { name: 'Page 2', url: 'https://i.ibb.co/35FrFsNP/img-2.png' },
-  { name: 'Page 3', url: 'https://i.ibb.co/htrjgcQ/img-3.png' },
-  { name: 'Page 4', url: 'https://i.ibb.co/7tYgxKJr/img-4.png' },
-  { name: 'Page 5', url: 'https://i.ibb.co/62G0Cb1/img-5.png' },
-  { name: 'Page 6', url: 'https://i.ibb.co/3Y7pH3mJ/img-6.png' },
-  { name: 'Page 7', url: 'https://i.ibb.co/23FzZcGP/img-7.png' },
-  { name: 'Page 8', url: 'https://i.ibb.co/twkWSyqz/img-8.png' },
-  { name: 'Page 9', url: 'https://i.ibb.co/tMqtg4p0/img-09.png' },
-  { name: 'Page 10', url: 'https://i.ibb.co/nNW98JNx/img-10.png' },
-  { name: 'Page 11', url: 'https://i.ibb.co/nNW98JNx/img-11.png' },
-  { name: 'Page 12', url: 'https://i.ibb.co/3yHrgW07/img-12.png' }
+  { name: 'Page 1', url: 'https://i.ibb.co/1fFGhzCp/img-1.jpg' },
+  { name: 'Page 2', url: 'https://i.ibb.co/4wb0Fbc6/img-2.jpg' },
+  { name: 'Page 3', url: 'https://i.ibb.co/Ndm3Fy0d/img-3.jpg' },
+  { name: 'Page 4', url: 'https://i.ibb.co/np3TdxG/img-4.jpg' },
+  { name: 'Page 5', url: 'https://i.ibb.co/9mQQB7jq/img-5.jpg' },
+  { name: 'Page 6', url: 'https://i.ibb.co/Q7pX4k7y/img-6.jpg' },
+  { name: 'Page 7', url: 'https://i.ibb.co/3yQghWgX/img-7.jpg' },
+  { name: 'Page 8', url: 'https://i.ibb.co/pB7gFgDM/img-8.jpg' },
+  { name: 'Page 9', url: 'https://i.ibb.co/j9Dw50rb/img-09.jpg' },
+  { name: 'Page 10', url: 'https://i.ibb.co/5gbGXsmX/img-10.jpg' },
+  { name: 'Page 11', url: 'https://i.ibb.co/gFJYBWtw/img-11.jpg' },
+  { name: 'Page 12', url: 'https://i.ibb.co/Y7Gr6b2m/img-12.jpg' }
   ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
