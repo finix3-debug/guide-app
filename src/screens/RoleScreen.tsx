@@ -84,12 +84,12 @@ const GuideScreen = () => {
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors w-fit group"
             >
               <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-xl font-serif font-medium">Retour</span>
+              <span className="text-xl font-serif font-medium">Back</span>
             </button>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <UserRoundCog className="w-9 h-9 text-cyan-500 opacity-80" />
+                <UserRoundCog className="w-10 h-10 text-cyan-500 opacity-80" />
                 <h2 className="text-3xl font-serif font-bold text-white tracking-wider">
                   Le Rôle du Manipulateur Dans la Prise en Charge Des Patients Au Cours de L’Angioscanner Thoracique  
                 </h2>
