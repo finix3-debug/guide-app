@@ -6,11 +6,17 @@ import { ChevronLeft, UserRoundCog, Loader2, ChevronRight, Maximize2, Minimize2 
 import HTMLFlipBook from 'react-pageflip';
 
 // Image sources organized by "page name"
+import img1 from '../assets/role_1.jpg';
+import img2 from '../assets/role_2.jpg';
+import img3 from '../assets/role_3.jpg';
+import img4 from '../assets/role_4.jpg';
+// ... استيراد باقي الصور
+
 const guidePages = [
-  { name: 'Page 1', url: '/images/Role/img_1.jpg' },
-  { name: 'Page 2', url: '/images/Role/img_2.jpg' },
-  { name: 'Page 3', url: '/images/Role/img_3.jpg' },
-  { name: 'Page 4', url: '/images/Role/img_4.jpg' },
+  { name: 'Page 1', url: img1 },
+  { name: 'Page 2', url: img2 },
+  { name: 'Page 3', url: img3 },
+  { name: 'Page 4', url: img4 },
   ];
 
 const FlipPage = forwardRef<HTMLDivElement, { url: string; width: number; height: number }>((props, ref) => {
